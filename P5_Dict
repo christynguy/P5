@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P5_Dict
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, List<double>> courses = new Dictionary<string, List<double>>(); // label as courses, 
+            //List<double> means list is not there yet but you want a new one to be created
+
+            if (courses.ContainsKey("MIS3013") == false) //check if the value is there in the dictionary
+            {
+                courses.Add("MIS3013", new List <double>()); // if value is false you would add in the course, and the list is unknown so you will add in later using new list
+            }
+            if (courses.ContainsKey("MIS3033") != true) // != true (if it is not true)
+            {
+                courses.Add("MIS3033", new List<double>());
+            }
+            if (!courses.ContainsKey("MIS3353")) //abreviation of a negative is ! in the beginning
+            {
+                courses.Add("MIS3353", new List<double>());
+            }
+
+            courses["MIS3013"].Add(95); // square brackets identify the location (key)
+            courses["MIS3013"].Add(85); // add in the list
+            courses["MIS3013"].Add(75);
+
+            courses["MIS3033"].Add(92); 
+            courses["MIS3033"].Add(88);
+            courses["MIS3033"].Add(82);
+
+            courses["MIS3353"].Add(95);
+            courses["MIS3353"].Add(85);
+            courses["MIS3353"].Add(75);
+
+            // need three average to be printed, use foreach to do this
+            //foreach run the same loop through different values
+            foreach (string key in courses.Keys) // run 3 times to visit s course each time; key can also be called coursesubject, cannot change course.Keys (predefined)
+            {
+                double sum = 0;
+                foreach (double grade in courses[key]) // run 3*3 times to visit a grade each time; uses square bracket to include the key
+                {
+                    sum += grade; //add all the grades together
+                }   
+                double average = sum / courses[key].Count; // average
+
+                Console.WriteLine($"The average for {key} is {average.ToString("N2")}"); //output the result and (to.string runs to 2 decimals)
+                // has to be in foreach loop to print for all three
+            }
+
+
+            Console.ReadKey();
+        }
+    }
+}
