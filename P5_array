@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P5_Array
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const int SIZE = 3;
+            int index = 0;
+
+            // square brackets is only used for arrays
+            string[] courseSubject = new string[SIZE];
+            int[] courseNumbers = new int[SIZE];
+
+            // course input
+            for (index = 0; index < courseNumbers.Length; index++)
+            {
+                Console.WriteLine("Please input course subject #" + (index + 1));
+                courseSubject[index]= Console.ReadLine();
+
+                Console.WriteLine("Please input course number #" + (index + 1));
+                courseNumbers[index] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            //course output
+            index = 0;
+            while (index < courseNumbers.Length)
+            {
+                string concat = courseSubject[index] + courseNumbers[index];
+                Console.WriteLine(concat);
+                index++;
+            }
+
+            Console.ReadKey();
+                
+        }
+    }
+}
